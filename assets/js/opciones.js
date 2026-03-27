@@ -1,5 +1,5 @@
 // =========================================
-// ASSETS/JS/OPCIONES.JS - ESTILO ARCADE
+// ASSETS/JS/OPCIONES.JS - PROTOCOLO SOLAR INDUSTRIAL
 // =========================================
 
 export class OpcionesGrafico {
@@ -8,46 +8,46 @@ export class OpcionesGrafico {
       // 1. FUNDAMENTAL: Fondo transparente para que se vea el CSS
       backgroundColor: 'transparent', 
       
-      // 2. Colores de las barras principales (Azul Claro y Amarillo Neón)
-      colors: ['#0cf', '#ff0'], 
+      // 2. Colores de las barras principales (Naranja Vibrante y Cian Cool)
+      colors: ['#ff9f1c', '#00f5d4'], 
       
       animation: { startup: true, duration: 1000, easing: 'out' },
       
-      // 3. Leyenda superior en blanco/amarillo brillante
+      // 3. Leyenda superior en blanco con fuente retro
       legend: {
         position: 'top', alignment: 'center',
-        textStyle: { fontName: 'Share Tech Mono', fontSize: 13, color: '#ff0' } // Amarillo
+        textStyle: { fontName: 'Share Tech Mono', fontSize: 13, color: '#ffffff' }
       },
       
       chartArea: { width: '85%', height: '70%' },
       bar: { groupWidth: '75%' },
       
-      // 4. Líneas de tendencia brillantes (Cyan y Amarillo)
+      // 4. Líneas de tendencia brillantes
       trendlines: {
-        0: { type: 'linear', lineWidth: 4, opacity: 0.9, color: '#0cf' }, // Cyan
-        1: { type: 'exponential', lineWidth: 4, opacity: 0.9, color: '#ff0' } // Amarillo
+        0: { type: 'linear', lineWidth: 4, opacity: 0.9, color: '#ffc16e' }, // Naranja pálido brillante
+        1: { type: 'exponential', lineWidth: 4, opacity: 0.9, color: '#5efff3' } // Cian pálido brillante
       },
       
-      // 5. Eje Horizontal (X) brillando en AZUL
+      // 5. Eje Horizontal (X)
       hAxis: {
         title: 'HORA DEL DÍA',
-        titleTextStyle: { fontName: 'Share Tech Mono', fontSize: 14, bold: true, italic: false, color: '#ff0' }, // Amarillo
+        titleTextStyle: { fontName: 'Share Tech Mono', fontSize: 14, bold: true, italic: false, color: '#ff9f1c' }, // Título Naranja
         format: 'h:mm a',
         viewWindow: { min: [7, 30, 0], max: [18, 0, 0] },
-        textStyle: { fontName: 'Share Tech Mono', fontSize: 11, color: '#0cf' }, // Texto Cyan/Azul
+        textStyle: { fontName: 'Share Tech Mono', fontSize: 11, color: '#00f5d4' }, // Texto Cian
         gridlines: { color: 'transparent' }
       },
       
-      // 6. Eje Vertical (Y) brillando en AZUL
+      // 6. Eje Vertical (Y)
       vAxis: {
         title: 'RATING (ESCALA 1-10)',
-        titleTextStyle: { fontName: 'Share Tech Mono', fontSize: 14, bold: true, italic: false, color: '#ff0' }, // Amarillo
+        titleTextStyle: { fontName: 'Share Tech Mono', fontSize: 14, bold: true, italic: false, color: '#ff9f1c' }, // Título Naranja
         viewWindow: { min: 0, max: 10 },
-        textStyle: { fontName: 'Share Tech Mono', fontSize: 11, color: '#0cf' }, // Texto Cyan/Azul
-        gridlines: { color: 'rgba(0, 204, 255, 0.15)' } // Líneas guía sutiles en cyan transparente
+        textStyle: { fontName: 'Share Tech Mono', fontSize: 11, color: '#00f5d4' }, // Texto Cian
+        gridlines: { color: 'rgba(0, 245, 212, 0.15)' } // Líneas guía sutiles en cian transparente
       },
 
-      // Aseguramos que el tooltip use HTML para aplicar nuestro CSS
+      // Aseguramos que el tooltip use HTML para poder aplicarle nuestro CSS
       tooltip: { isHtml: true }
     };
   }

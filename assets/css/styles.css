@@ -1,67 +1,66 @@
 /* =========================================
-   ASSETS/CSS/STYLES.CSS - ESTILO ARCADE
+   ASSETS/CSS/STYLES.CSS - PROTOCOLO SOLAR INDUSTRIAL
 ========================================= */
 
 /* Importamos la fuente estilo computadora retro */
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 body {
-    /* Fondo oscuro con una cuadrícula sutil en AZUL ELÉCTRICO */
-    background-color: #05050a; /* Un negro azulado muy profundo */
+    /* Fondo oscuro con cuadrícula de datos en CIAN COOL sutil */
+    background-color: #05050a; /* Un negro casi marino muy profundo */
     background-image: 
-        linear-gradient(rgba(0, 0, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 255, 0.1) 1px, transparent 1px);
+        linear-gradient(rgba(0, 245, 212, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 212, 0.05) 1px, transparent 1px);
     background-size: 30px 30px;
     font-family: 'Share Tech Mono', monospace;
     color: #fff; /* Texto principal en blanco */
     text-transform: uppercase;
 }
 
-/* El título brillando como neón BLANCO/AMARILLO */
+/* El título brillando en NARANJA VIBRANTE */
 .titulo-neon {
     color: #fff;
     text-shadow: 
         0 0 5px #fff, 
         0 0 10px #fff, 
-        0 0 20px #ff0, 
-        0 0 40px #ff0, 
-        0 0 80px #ff0;
+        0 0 20px #ff9f1c, 
+        0 0 40px #ff9f1c, 
+        0 0 80px #ff9f1c;
 }
 
-/* Subtítulos brillando en AZUL */
+/* Subtítulo en CIAN COOL */
 .titulo-neon + p {
-    color: #00f !important; /* Azul eléctrico */
+    color: #00f5d4 !important;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px #00f;
 }
 
-/* La tarjeta con bordes afilados en AMARILLO NEÓN */
+/* La tarjeta con bordes afilados en NARANJA VIBRANTE */
 .tarjeta-ciberpunk {
     background-color: rgba(5, 5, 10, 0.9);
-    border: 2px solid #ff0; /* Borde Amarillo */
-    box-shadow: 0 0 15px rgba(255, 255, 0, 0.5), inset 0 0 15px rgba(255, 255, 0, 0.2);
+    border: 2px solid #ff9f1c; /* Borde Naranja */
+    box-shadow: 0 0 15px rgba(255, 159, 28, 0.5), inset 0 0 15px rgba(255, 159, 28, 0.2);
     border-radius: 0;
     position: relative;
-    /* Mantenemos la animación de pulso, pero en amarillo */
-    animation: pulsoNeonArcade 2s infinite alternate; 
+    /* Mantenemos la animación de pulso, pero en naranja */
+    animation: pulsoNeonIndustrial 2s infinite alternate; 
 }
 
-/* Esquineros HUD en AZUL */
+/* Esquineros HUD en CIAN COOL */
 .tarjeta-ciberpunk::before {
     content: ''; position: absolute; top: -4px; left: -4px;
     width: 25px; height: 25px;
-    border-top: 4px solid #00f; border-left: 4px solid #00f;
+    border-top: 4px solid #00f5d4; border-left: 4px solid #00f5d4;
 }
 .tarjeta-ciberpunk::after {
     content: ''; position: absolute; bottom: -4px; right: -4px;
     width: 25px; height: 25px;
-    border-bottom: 4px solid #00f; border-right: 4px solid #00f;
+    border-bottom: 4px solid #00f5d4; border-right: 4px solid #00f5d4;
 }
 
-/* Controles del Slider estilo "terminal" con borde AZUL */
+/* Controles del Slider con borde NARANJA */
 .contenedor-controles {
     background-color: #000;
-    border: 1px solid #00f; /* Borde Azul */
+    border: 1px solid #ff9f1c; /* Borde Naranja */
     padding: 15px 30px;
     display: inline-flex;
     align-items: center;
@@ -71,59 +70,66 @@ body {
     color: #fff !important;
 }
 
-/* El número de registros brillando en AMARILLO */
+/* El número de registros en NARANJA vibrante */
 .badge-neon {
-    background-color: #ff0;
+    background-color: #ff9f1c;
     color: #000;
     font-weight: bold;
     font-size: 1.2rem;
     padding: 5px 15px;
-    box-shadow: 0 0 10px #ff0;
+    box-shadow: 0 0 10px #ff9f1c;
     border-radius: 0;
 }
 
-/* Slider Personalizado: Pista AZUL, Botón AMARILLO */
+/* Slider Personalizado: Pista Naranja, Botón Cian */
 input[type=range] { -webkit-appearance: none; background: transparent; width: 200px; }
 input[type=range]::-webkit-slider-runnable-track {
     width: 100%; height: 4px;
-    background: #00f; /* Pista Azul */
-    box-shadow: 0 0 8px #00f;
+    background: #ff9f1c; /* Pista Naranja */
+    box-shadow: 0 0 8px #ff9f1c;
 }
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 24px; width: 12px;
-    background: #ff0; /* Botón Amarillo */
+    background: #00f5d4; /* Botón Cian */
     margin-top: -10px;
-    box-shadow: 0 0 12px #ff0;
+    box-shadow: 0 0 12px #00f5d4;
     cursor: crosshair;
 }
 
-/* Definición de la Animación de Pulso Amarillo */
-@keyframes pulsoNeonArcade {
+/* Definición de la Animación de Pulso Industrial Naranja */
+@keyframes pulsoNeonIndustrial {
     0% {
-        box-shadow: 0 0 10px rgba(255, 255, 0, 0.3), inset 0 0 10px rgba(255, 255, 0, 0.1);
-        border-color: #aa0; /* Amarillo más apagado */
+        box-shadow: 0 0 10px rgba(255, 159, 28, 0.3), inset 0 0 10px rgba(255, 159, 28, 0.1);
+        border-color: #cc7f12; /* Naranja más apagado */
     }
     100% {
-        box-shadow: 0 0 30px rgba(255, 255, 0, 0.9), inset 0 0 20px rgba(255, 255, 0, 0.5);
-        border-color: #ff0; /* Amarillo brillante */
+        box-shadow: 0 0 30px rgba(255, 159, 28, 0.9), inset 0 0 20px rgba(255, 159, 28, 0.5);
+        border-color: #ff9f1c; /* Naranja brillante */
     }
 }
 
-/* Hack final para el Tooltip (Borde Amarillo, Fondo Negro, Texto Azul) */
+/* =========================================
+   HACK PARA EL TOOLTIP DE GOOGLE CHARTS (Estilo Solar)
+========================================= */
 div.google-visualization-tooltip {
     background-color: rgba(5, 5, 10, 0.95) !important;
-    border: 1px solid #ff0 !important;
-    box-shadow: 0 0 15px rgba(255, 255, 0, 0.5) !important;
+    border: 1px solid #ff9f1c !important; /* Borde Naranja */
+    box-shadow: 0 0 15px rgba(255, 159, 28, 0.5) !important;
     border-radius: 0 !important;
     padding: 10px !important;
 }
-div.google-visualization-tooltip, div.google-visualization-tooltip * {
+
+/* Forzar que CUALQUIER texto dentro del tooltip sea Cian brillante */
+div.google-visualization-tooltip,
+div.google-visualization-tooltip * {
     font-family: 'Share Tech Mono', monospace !important;
-    color: #0cf !important; /* Azul claro brillante para el texto */
-    text-shadow: 0 0 5px rgba(0, 204, 255, 0.5) !important;
+    color: #00f5d4 !important; /* Texto en Cian Cool */
+    text-shadow: 0 0 5px rgba(0, 245, 212, 0.5) !important;
 }
+
+/* Hacer que la primera línea (la hora) sea blanca para que resalte más */
 div.google-visualization-tooltip > ul > li:first-child span {
-    color: #fff !important; /* Hora en blanco */
+    color: #fff !important;
     font-weight: bold !important;
 }
