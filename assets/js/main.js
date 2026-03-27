@@ -53,6 +53,17 @@ function actualizarHUD(arregloDatos) {
   const esOptimo = promMot >= 5 && promEne >= 5;
   hudEstado.innerText = esOptimo ? 'ÓPTIMO' : 'FLUCTUANDO';
   hudEstado.style.color = esOptimo ? '#00f5d4' : '#ff9f1c';
+
+if (promMot < 5 || promEne < 5) {
+    // Alerta visual en la pestaña: Parpadea entre un círculo naranja y un rayo
+    FaviconManager.setAlert('🟠', '⚡', 800); 
+    hudEstado.innerText = 'FLUCTUANDO';
+} else {
+    // Estado normal: Círculo cian estable
+    FaviconManager.setByEmoji('🔵');
+    hudEstado.innerText = 'ÓPTIMO';
+}
+
 }
 
 function toggleLiveFeed() {

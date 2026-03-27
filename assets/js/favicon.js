@@ -1,28 +1,63 @@
 // =========================================
-// ASSETS/JS/FAVICON.JS - MÓDULO DE IDENTIDAD
+// ASSETS/JS/FAVICON.JS - MÓDULO DE IDENTIDAD NEURAL
 // =========================================
 
 const FaviconManager = {
-    // Cambia el favicon usando una ruta de imagen
+    intervaloAlerta: null,
+
+    // 1. Cambia el favicon usando una ruta de imagen (PNG/ICO)
     setByUrl: function(url) {
+        this.detenerAlerta(); // Detiene cualquier parpadeo previo
         const link = document.getElementById('dynamic-favicon') || this.createLink();
         link.href = url;
     },
 
-    // Genera un favicon dinámico con un Emoji (Estilo Sistema Vivo)
+    // 2. Genera un favicon con Emoji (Look Cyberpunk inmediato)
     setByEmoji: function(emoji) {
+        this.detenerAlerta();
+        this._renderEmoji(emoji);
+    },
+
+    // 3. SISTEMA DE ALERTA: Hace que el favicon parpadee entre dos estados
+    // Úsalo cuando el "Estado de Red" sea FLUCTUANDO
+    setAlert: function(emojiA, emojiB, velocidad = 1000) {
+        this.detenerAlerta();
+        let mostrandoA = true;
+        
+        this._renderEmoji(emojiA);
+        
+        this.intervaloAlerta = setInterval(() => {
+            this._renderEmoji(mostrandoA ? emojiB : emojiA);
+            mostrandoA = !mostrandoA;
+        }, velocidad);
+    },
+
+    // 4. Detiene cualquier animación activa en la pestaña
+    detenerAlerta: function() {
+        if (this.intervaloAlerta) {
+            clearInterval(this.intervaloAlerta);
+            this.intervaloAlerta = null;
+        }
+    },
+
+    // --- MÉTODOS PRIVADOS (Uso interno) ---
+
+    _renderEmoji: function(emoji) {
         const canvas = document.createElement('canvas');
         canvas.height = 32;
         canvas.width = 32;
         const ctx = canvas.getContext('2d');
-        ctx.font = '28px serif';
-        ctx.fillText(emoji, 0, 28);
+        
+        // Ajuste de fuente para que se vea bien en la pestaña
+        ctx.font = '26px serif'; 
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(emoji, 16, 18);
 
         const link = document.getElementById('dynamic-favicon') || this.createLink();
         link.href = canvas.toDataURL();
     },
 
-    // Crea el elemento link si no existe en el HTML
     createLink: function() {
         const newLink = document.createElement('link');
         newLink.id = 'dynamic-favicon';
