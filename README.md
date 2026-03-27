@@ -39,7 +39,6 @@ El código está organizado bajo principios de modularidad y separación de resp
  ┣ 📂 assets
  ┃ ┣ 📂 css
  ┃ ┃ ┗ 📜 styles.css          # Estilos globales, variables y animaciones
- ┃ ┣ 📂 img                   # Recursos gráficos
  ┃ ┗ 📂 js
  ┃   ┣ 📜 datos.js            # Simulación de carga/estructuración de datos
  ┃   ┣ 📜 favicon.js          # Control dinámico del icono de la pestaña
