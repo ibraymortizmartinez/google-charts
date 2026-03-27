@@ -19,8 +19,17 @@ function inicializarDashboard() {
 
   slider.addEventListener('input', function() {
     badgeSlider.innerText = this.value;
+
+    // PROTOCOLO DE SEGURIDAD: 
+    // Si el usuario intenta cambiar el volumen manualmente, 
+    // detenemos el Live Feed para evitar conflictos de datos.
+    if (isLive) {
+        console.log("SISTEMA: Interrupción manual detectada. Desactivando Live Feed...");
+        toggleLiveFeed(); // Esta función ya se encarga de limpiar el intervalo y el botón
+    }
+
     filtrarYRenderizar(this.value);
-  });
+});
 
   // Eventos de Botones
   document.getElementById('btn-live').addEventListener('click', toggleLiveFeed);
