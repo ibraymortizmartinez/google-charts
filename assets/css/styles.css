@@ -27,10 +27,11 @@ body {
 /* La tarjeta con bordes afilados y brillo magenta */
 .tarjeta-ciberpunk {
     background-color: rgba(10, 10, 12, 0.85);
-    border: 2px solid #f0f; /* Borde Magenta */
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5), inset 0 0 15px rgba(255, 0, 255, 0.2);
-    border-radius: 0; /* ¡Cero curvas! */
+    border: 2px solid #f0f;
+    border-radius: 0;
     position: relative;
+    /* ¡Magia aplicada aquí abajo! dura 2 segundos, es infinita y va y viene (alternate) */
+    animation: pulsoNeon 2s infinite alternate; 
 }
 
 /* Adornos en las esquinas para parecer una interfaz HUD (Heads Up Display) */
@@ -100,4 +101,16 @@ input[type=range]::-webkit-slider-thumb {
     width: 100%;
     min-height: 500px;
     border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+/* 1. Definimos la animación clave (keyframes) */
+@keyframes pulsoNeon {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 0, 255, 0.3), inset 0 0 10px rgba(255, 0, 255, 0.1);
+        border-color: #a0a; /* Magenta más oscuro y apagado */
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(255, 0, 255, 0.9), inset 0 0 20px rgba(255, 0, 255, 0.5);
+        border-color: #f0f; /* Magenta al máximo brillo */
+    }
 }
