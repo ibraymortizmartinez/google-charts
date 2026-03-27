@@ -1,45 +1,23 @@
-// Datos.js
-
-export class DatosGrafico {
-  
-  obtenerDataTable(cantidadRegistros) {
-    const data = new google.visualization.DataTable();
-    data.addColumn('timeofday', 'Hora del dia');
-    data.addColumn('number', 'Niveles de Motivacion');
-    data.addColumn('number', 'Niveles de Energia');
-
-    let hora = 8;   // Empezamos a las 8:00 am
-    let minuto = 0;
-
-    // Bucle que se repite según el valor del slider
-    for (let i = 0; i < cantidadRegistros; i++) {
-      
-      // 1. Damos formato visual a la hora (ej. "8:30 am")
-      const ampm = hora >= 12 ? 'pm' : 'am';
-      const horaVisual = hora > 12 ? hora - 12 : hora;
-      const minutoVisual = minuto === 0 ? '00' : '30';
-      const textoHora = `${horaVisual}:${minutoVisual} ${ampm}`;
-
-      // 2. Generamos números aleatorios entre 0.0 y 10.0
-      // Math.random() genera decimales. Multiplicamos y redondeamos para tener 1 decimal.
-      const motivacionAleatoria = Math.round(Math.random() * 100) / 10;
-      const energiaAleatoria = Math.round(Math.random() * 100) / 10;
-
-      // 3. Agregamos la fila a la tabla
-      data.addRow([
-        { v: [hora, minuto, 0], f: textoHora }, 
-        motivacionAleatoria, 
-        energiaAleatoria
-      ]);
-
-      // 4. Sumamos 30 minutos para la siguiente vuelta del bucle
-      minuto += 30;
-      if (minuto === 60) {
-        minuto = 0;
-        hora += 1;
-      }
-    }
-
-    return data;
-  }
-}
+// Datos originales base de la red neural
+const datosBase = [
+  [{ v: [8, 0, 0], f: '8:00 am' }, 1, 0.25],
+  [{ v: [8, 30, 0], f: '8:30 am' }, 1.5, 0.3],
+  [{ v: [9, 0, 0], f: '9:00 am' }, 2, 0.4],
+  [{ v: [9, 30, 0], f: '9:30 am' }, 2.5, 0.5],
+  [{ v: [10, 0, 0], f: '10:00 am' }, 3, 0.7],
+  [{ v: [10, 30, 0], f: '10:30 am' }, 3.5, 0.9],
+  [{ v: [11, 0, 0], f: '11:00 am' }, 4, 1.2],
+  [{ v: [11, 30, 0], f: '11:30 am' }, 4.5, 1.5],
+  [{ v: [12, 0, 0], f: '12:00 pm' }, 5, 1.9],
+  [{ v: [12, 30, 0], f: '12:30 pm' }, 5.5, 2.4],
+  [{ v: [13, 0, 0], f: '1:00 pm' }, 6, 3.0],
+  [{ v: [13, 30, 0], f: '1:30 pm' }, 6.5, 3.7],
+  [{ v: [14, 0, 0], f: '2:00 pm' }, 7, 4.5],
+  [{ v: [14, 30, 0], f: '2:30 pm' }, 7.5, 5.4],
+  [{ v: [15, 0, 0], f: '3:00 pm' }, 8, 6.4],
+  [{ v: [15, 30, 0], f: '3:30 pm' }, 8.5, 7.5],
+  [{ v: [16, 0, 0], f: '4:00 pm' }, 9, 8.7],
+  [{ v: [16, 30, 0], f: '4:30 pm' }, 9.5, 9.5],
+  [{ v: [17, 0, 0], f: '5:00 pm' }, 9.8, 9.8],
+  [{ v: [17, 30, 0], f: '5:30 pm' }, 10, 10]
+];

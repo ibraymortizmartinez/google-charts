@@ -1,58 +1,36 @@
-// App.js
-
-import { DatosGrafico } from './datos.js';
-import { OpcionesGrafico } from './opciones.js';
-
-class Graficador {
-  constructor(contenedorId, sliderId, textoSliderId) {
-    // Guardamos referencias a los elementos del HTML
-    this.contenedorId = contenedorId;
-    this.slider = document.getElementById(sliderId);
-    this.textoSlider = document.getElementById(textoSliderId);
-
-    // Instanciamos nuestras clases
-    this.manejadorDatos = new DatosGrafico();
-    this.manejadorOpciones = new OpcionesGrafico();
-  }
-
-  iniciar() {
-    google.charts.load('current', { packages: ['corechart', 'bar'] });
-    
-    // Cuando Google Charts esté listo, configuramos el slider y dibujamos
-    google.charts.setOnLoadCallback(() => {
-      this.configurarEventos();
-      this.dibujar(); // Primer dibujo al cargar la página
-    });
-  }
-
-  configurarEventos() {
-    // El evento 'input' se dispara en tiempo real mientras arrastras el control
-    this.slider.addEventListener('input', () => {
-      // 1. Actualizamos el número rojo en la pantalla
-      this.textoSlider.textContent = this.slider.value;
-      // 2. Volvemos a dibujar la gráfica con la nueva cantidad
-      this.dibujar();
-    });
-  }
-
-  dibujar() {
-    // Convertimos el valor del slider (que es texto) a número entero
-    const cantidad = parseInt(this.slider.value, 10);
-
-    // Le pedimos al módulo de datos que genere esa cantidad
-    const data = this.manejadorDatos.obtenerDataTable(cantidad);
-    const options = this.manejadorOpciones.obtenerConfiguracion();
-
-    const chartDiv = document.getElementById(this.contenedorId);
-    const chart = new google.visualization.ColumnChart(chartDiv);
-    
-    chart.draw(data, options);
-  }
+function dibujarGrafica(arregloDatos) {
+  var data = new google.visualization.DataTable();
+  data.addColumn('timeofday', 'Hora del dia');
+  data.addColumn('number', 'Niveles de Motivacion');
+  data.addColumn('number', 'Niveles de Energia');
+  
+  data.addRows(arregloDatos);
+  chart.draw(data, opcionesEstilo);
+  actualizarHUD(arregloDatos);
 }
 
-// ==========================================
-// INICIALIZACIÓN
-// ==========================================
-// Pasamos los 3 IDs que creamos en el HTML
-const miAppGrafica = new Graficador('chart_div', 'sliderDatos', 'valorSlider');
-miAppGrafica.iniciar();
+function filtrarYRenderizar(cantidad) {
+  datosActuales = JSON.parse(JSON.stringify(datosBase.slice(0, cantidad)));
+  
+  if(datosActuales.length > 0) {
+     let ultimaFila = datosActuales[datosActuales.length - 1][0].v;
+     let ultimaHora = ultimaFila[0];
+     let ultimoMin = ultimaFila[1] === 30 ? 0 : 30;
+     if (ultimaFila[1] === 30) ultimaHora++;
+
+     opcionesEstilo.hAxis.viewWindow.max = [ultimaHora, ultimoMin, 0];
+  }
+  dibujarGrafica(datosActuales);
+}
+
+function mutarDatosParaLiveFeed() {
+  datosActuales = datosActuales.map((fila, index) => {
+    let nuevaFila = [...fila];
+    let ruidoMotivacion = (Math.random() * 1.6) - 0.8; 
+    let ruidoEnergia = (Math.random() * 1.6) - 0.8;
+
+    nuevaFila[1] = Math.max(0, Math.min(10, datosBase[index][1] + ruidoMotivacion));
+    nuevaFila[2] = Math.max(0, Math.min(10, datosBase[index][2] + ruidoEnergia));
+    return nuevaFila;
+  });
+}
