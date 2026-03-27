@@ -1,0 +1,103 @@
+/* Importamos una fuente estilo computadora/hacker desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+    /* Fondo oscuro con una cuadrícula sutil estilo Matrix/Tron */
+    background-color: #0a0a0c;
+    background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    font-family: 'Share Tech Mono', monospace;
+    color: #0ff; /* Texto en Cyan Neón */
+    text-transform: uppercase; /* Todo en mayúsculas para más agresividad */
+}
+
+/* El título brillando como letrero de neón */
+.titulo-neon {
+    color: #fff;
+    text-shadow: 
+        0 0 5px #fff, 
+        0 0 10px #fff, 
+        0 0 20px #0ff, 
+        0 0 40px #0ff, 
+        0 0 80px #0ff;
+}
+
+/* La tarjeta con bordes afilados y brillo magenta */
+.tarjeta-ciberpunk {
+    background-color: rgba(10, 10, 12, 0.85);
+    border: 2px solid #f0f; /* Borde Magenta */
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5), inset 0 0 15px rgba(255, 0, 255, 0.2);
+    border-radius: 0; /* ¡Cero curvas! */
+    position: relative;
+}
+
+/* Adornos en las esquinas para parecer una interfaz HUD (Heads Up Display) */
+.tarjeta-ciberpunk::before {
+    content: '';
+    position: absolute;
+    top: -4px; left: -4px;
+    width: 25px; height: 25px;
+    border-top: 4px solid #0ff;
+    border-left: 4px solid #0ff;
+}
+.tarjeta-ciberpunk::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; right: -4px;
+    width: 25px; height: 25px;
+    border-bottom: 4px solid #0ff;
+    border-right: 4px solid #0ff;
+}
+
+/* Controles del Slider */
+.contenedor-controles {
+    background-color: #000;
+    border: 1px solid #0ff;
+    padding: 15px 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* El número de registros */
+.badge-neon {
+    background-color: #f0f;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 5px 15px;
+    box-shadow: 0 0 10px #f0f;
+    border-radius: 0;
+}
+
+/* Magia negra de CSS para modificar el Slider nativo del navegador */
+input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+    width: 200px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: #0ff;
+    box-shadow: 0 0 8px #0ff;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 24px;
+    width: 12px;
+    background: #f0f;
+    margin-top: -10px;
+    box-shadow: 0 0 12px #f0f;
+    cursor: crosshair;
+}
+
+/* Google charts inyecta un fondo blanco por defecto. 
+   Le ponemos un borde para que parezca una pantalla de datos crudos */
+#chart_div {
+    width: 100%;
+    min-height: 500px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
